@@ -75,17 +75,19 @@
             </div>
           </nav>
           <div class="stud" >STUDENT DATABASE </div>
-          <div><a href="/student/create">Add New Student + </a></div>
-          <div><a href="/student/create">Search By ID + </a></div>
-   
-          <div><a href="/student/create">Add New Student + </a></div>
-   
+          <div style = "text-align: center;">
+            <div class = "divbtn"><a href="/student/create" id = "alink33">Add New Student +</a></div>
+            <div class = "divbtn"><a href="/student/create" id = "alink33">Search By ID  <i class="zmdi zmdi-search-in-page"></i></a></div>
+     
+            <div class = "divbtn"><a href="/student/create" id = "alink33">Search by name <i class="zmdi zmdi-search-in-page"></i></a></div>
+          </div>
           <table style="margin:0px auto; width:700px;">
 <tr>
   <th style="text-align:center; padding:10px 20px;">S.no</th>
   <th style="text-align: center;padding:10px 35px;">Name</th>
   <th style="text-align: center; padding:10px 50px;">Email</th>
   <th style="text-align: center;padding:10px 25px;">Age</th>
+  <th style="text-align: center;padding:10px 25px;">Status</th>
   <th colspan="3" style="text-align: center;padding:10px 199px;">Action</th>
 </tr>
   <% for (var i=0;i<users.length;i++){%>
@@ -94,9 +96,11 @@
   <td><%= users[i].name%></td>
   <td><%= users[i].email%></td>
   <td><%= users[i].age%></td>
-  <td><div> <a   class="button" href="/student?id=<%= users[i]._id %> ">Details</a> </div></td>
-  <td><div>  <a  class="button"  href="/student/update/<%= users[i]._id %> ">Update </a> </div></td>
-  <td><div>  <a  class="button"  href="/student/delete/<%= users[i]._id %> ">Delete</a></div></td>
+  <td><%= users[i].status%></td>
+  <td><div> <a   class="button" href="/student?id=<%= users[i]._id %> ">Details  <i class="zmdi zmdi-eye"></i></a> </div></td>
+  <td><div>  <a  class="button"  href="/student/update/<%= users[i]._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div></td>
+  <td><div>  <a  class="button"  href="/student/delete/<%= users[i]._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div></td>
+</tr>
 </tr>
 
   <% } %>

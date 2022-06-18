@@ -23,6 +23,7 @@ connectDB()
 // const controller = require('./server/controller');
 app.use(express.urlencoded({extended:false}));
 var Studentdb = require("./model/scheme");
+// const Teacherdb = require("./model/teacher_schema");
 
 app.get("/", (req,res)=>{
     res.render("index")
@@ -37,7 +38,7 @@ app.get("/student", (req,res)=>{
             }
             else{
                 console.log(users);
-                res.render("show",{users})
+                res.render("students/show",{users})
         }   
     }).catch(err=>{
         res.status(500).send({message:`Error retriving user with id ${id}`})
@@ -45,16 +46,36 @@ app.get("/student", (req,res)=>{
 else{
     Studentdb.find()
     .then(users=>{
-        res.render("student",{users})
+        res.render("students/student",{users})
     })
 .catch(err=>{
     res.status(500).send({message:err.message||"Error finding Data"});
 })}
 })
 
+// app.get("/student/find",(req,res)=>{
+//     res.render("students/find");
+// })
+
+// app.post("/student/find/result",(req,res)=>{
+//     console.log(req.body.name);
+//     const id = req.body.name;
+//         Studentdb.find({name:req.body.name}).then(users=>{
+//             if(!users){
+//                 res.status(404).send({message:`Cannot find user with id ${id}`});
+//             }
+//             else{
+//                 console.log(users);
+//                 res.render("students/show",{id})
+//         }   
+//     }).catch(err=>{
+//         res.status(500).send({message:`Error retriving user with id ${id}`})
+//     })
+// })
+
 //create student
 app.get("/student/create", (req,res)=>{
-    res.render("create")
+    res.render("students/create")
 })
 app.post("/student/create",(req,res)=>{
     if(!req.body){
@@ -66,7 +87,8 @@ app.post("/student/create",(req,res)=>{
     email: req.body.email,
     password : req.body.password,
     confirmpass: req.body.confirmpass,
-    age: req.body.age
+    age: req.body.age,
+    status:req.body.status
     })
     users
     .save(users)
@@ -93,7 +115,7 @@ app.get("/student/update/:id",(req,res)=>{
             res.status(404).send({message:`Cannot find user with id ${id}`});
         }
         else{
-            res.render("update",{users})
+            res.render("students/update",{users})
     }   
 }).catch(err=>{
     res.status(500).send({message:`Error retriving user with id ${id}`})

@@ -6,49 +6,68 @@ body {
   font-size: 16px;
   background-color: red;
 }
-table,th,td,tr{
+table,
+th,
+td,
+tr {
   text-align: center;
 }
-tr{
+.button1 {
+  width: 90%;
+  padding: 15px 0px;
+  margin: 10px auto;
+  background-color: rgb(11, 15, 230);
+  color: white;
+  transition: 0.4s ease-in-out;
+  border: none;
+  border-radius: 3px;
 }
-tr:nth-child(even){
-  background-color: rgb(135, 238, 212) ; 
+.button1:hover {
+  background-color: rgb(255, 208, 0);
 }
-tr:nth-child(odd){
-  background-color: rgb(0, 148, 111) ;
+tr:nth-child(even) {
+  background-color: rgb(231, 229, 229);
 }
-div>a{
-  padding: 10px 10px;
+tr:nth-child(1) {
+  background-color: #37474f;
+  color: white;
+}
+.divbtn {
+  display: inline;
   width: 150px;
-  display: block;
+}
+#alink33 {
+  padding: 10px 15px;
+  width: 150px;
+  display: inline-block;
   font-size: 13px;
   border-radius: 9px;
-  background-color: rgb(0, 148, 111) ;
+  background-color: #0d607e;
+  color: white;
   text-align: center;
   font-weight: 500;
-  margin-left: 7% ;
+  margin-right: 20px;
   margin-bottom: 20px;
-  color:black;
-  trasnition:0.4s ease-in-out
+  transition: 0.3s ease-in-out;
 }
-div>a:hover{
+#alink33:hover {
   /* color:black; */
   text-decoration: none;
-background-color: #0ecdcd;
+  background-color: #228f8f;
+  color: white;
 }
-.stud{
+.stud {
   font-weight: 500;
   font-size: 25px;
-  margin-bottom:20px;
-  padding :30px auto;
+  margin-bottom: 20px;
+  padding: 30px auto;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-tr{
+tr {
   text-align: center;
-  height:30px;
+  height: 30px;
 }
-
 
 .boxportal {
   position: absolute;
@@ -64,20 +83,23 @@ tr{
   /* margin-left: 1.5%; */
 }
 .button {
-  /* width: 50px%; */
-  padding: 7px 1px;
-  margin:4px 3px;
-  /* margin: 10px auto; */
-  background-color:  rgb(135, 238, 212) ;
-  color: black;
-  transition: 0.3s ease-in-out;
-  border: none;
+  padding: 10px 4px;
+  width: 130px;
+  display: block;
+  font-size: 12px;
   border-radius: 8px;
-  font-size: 13px;
-  border: 3px solid rgb(0, 148, 111) ;
+  background-color: #0d607e;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  margin: 5px 1px;
+  /* margin-bottom: 20px; */
+  transition: 0.3s ease-in-out;
 }
 .button:hover {
-  background-color: rgb(225, 19, 19)  ;
+  text-decoration: none;
+  background-color: #228f8f;
+  color: white;
 }
 .inp {
   width: 90%;
@@ -147,9 +169,6 @@ tr{
 
 #sidebar header a:hover {
   color: #fff;
-}
-
-#sidebar .nav {
 }
 
 #sidebar .nav a {
