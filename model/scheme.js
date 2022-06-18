@@ -1,7 +1,11 @@
 const mongoose=require("mongoose");
 
 const student_schema = new mongoose.Schema({
-
+    sno:{
+        type:String,
+        required:true,
+        unique:true
+    },
     name : {
     type:String,
     required:true
@@ -10,7 +14,6 @@ const student_schema = new mongoose.Schema({
     email : {
         type:String,
         required:true,
-        unique:true
         },
 
         password : {

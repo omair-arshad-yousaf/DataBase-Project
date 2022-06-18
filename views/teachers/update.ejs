@@ -23,7 +23,7 @@
   <br>
     <!-- <div style = "margin-top: 10%;"> -->
     <!-- <form class="/student/update/<%=users._id%>" method="put" > -->
-      <div class="container " style = "text-align:center ; " ><h3><strong>Update Student</strong> </h3></div>
+      <div class="container " style = "text-align:center ; " ><h3><strong>UPDATE TEACHER RECORD</strong> </h3></div>
     
           <div class="row " style = "width:99.7vw; display: flex; justify-content: center;" >
        <!-- <div class="colo"> -->
@@ -33,8 +33,19 @@
     
             <div class="col-lg-6 bg-light pt-4" >
 
-              <form action="/student/update/<%=users._id%>"  method="post">
+              <form action="/teacher/update/<%=users._id%>"  method="post">
                 <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="text" class="form-label">ID</label>
+                    <input
+                      id="sno"
+                      class="form-control"
+                      type="text"
+                      placeholder="Enter your id"
+                      name="sno"
+                      value="<%= users.sno%>"
+                    />
+                  </div>
                   <div class="mb-3 col-md-6">
                     <label for="text" class="form-label">Name</label>
                     <input

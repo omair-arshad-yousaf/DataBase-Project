@@ -77,13 +77,14 @@
           <div class="stud" >STUDENT DATABASE </div>
           <div style = "text-align: center;">
             <div class = "divbtn"><a href="/student/create" id = "alink33">Add New Student +</a></div>
-            <div class = "divbtn"><a href="/student" id = "alink33">Search By ID  <i class="zmdi zmdi-search-in-page"></i></a></div>
+            <div class = "divbtn"><a href="/student/find_id" id = "alink33">Search By ID  <i class="zmdi zmdi-search-in-page"></i></a></div>
      
-            <div class = "divbtn"><a href="/student/search" id = "alink33">Search by name <i class="zmdi zmdi-search-in-page"></i></a></div>
+            <div class = "divbtn"><a href="/student/find" id = "alink33">Search by name <i class="zmdi zmdi-search-in-page"></i></a></div>
           </div>
           <table style="margin:0px auto; width:700px;">
 <tr>
   <th style="text-align:center; padding:10px 20px;">S.no</th>
+  <th style="text-align:center; padding:10px 20px;">ID</th>
   <th style="text-align: center;padding:10px 35px;">Name</th>
   <th style="text-align: center; padding:10px 50px;">Email</th>
   <th style="text-align: center;padding:10px 25px;">Age</th>
@@ -93,6 +94,7 @@
   <% for (var i=0;i<users.length;i++){%>
     <tr>
     <td><%=      i+1     %></td>
+      <td><%= users[i].sno%></td>
   <td><%= users[i].name%></td>
   <td><%= users[i].email%></td>
   <td><%= users[i].age%></td>
