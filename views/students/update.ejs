@@ -33,7 +33,7 @@
     
             <div class="col-lg-6 bg-light pt-4" >
 
-              <form action="/student/update/<%=users._id%>"  method="post">
+              <form action="/student_update/<%=users._id%>"  method="post">
                 <div class="row">
                    <div class="mb-3 col-md-6">
                     <label for="text" class="form-label">ID</label>
@@ -101,6 +101,18 @@
                       placeholder="Enter your age"
                     />
                   </div>
+                  <div class="row">
+                    <div class="mb-3 ">
+                      <label for="age" class="form-label">Section</label>
+                      <input
+                        id="age"
+                        class="form-control"
+                        type="text"
+                        name="section"
+                        value="<%= users.section%>"
+                        placeholder="Enter your section"
+                      />
+                    </div>
                   
                   <div class="row">
                     <div class="mb-3 ">
@@ -132,31 +144,7 @@
        
     
       
-      <br><br><br>
-      <div class="footer-basic">
-        <!-- <footer>
-    
-            <ul class="list-inline">
-                <div class="container">
-    
-    
-                    <a href="https://www.linkedin.com"  target = "_blank" class="fa fa-linkedin"><strong>in</strong></a>
-                    <a href="https://web.facebook.com/?_rdc=1&_rdr" target = "_blank" class="fa fa-facebook">f</a>
-    <a href="https://www.google.com/?client=safari"  target = "_blank" class="fa fa-google">g </a>
-                    <a href="https://www.yahoo.com"  target = "_blank" class="fa fa-yahoo">Y</a>
-    <br><br>
-                <hr id = "newhr">
-               
-            </div>
-      
-    
-    
-    
-                
-            </ul>
-            <!-- <p class="copyright"> &nbsp MyWeb © </p> -->
-        </footer> -->
-      </div>
+<br><br><br>
     
       <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

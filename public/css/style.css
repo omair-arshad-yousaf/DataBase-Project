@@ -4,7 +4,7 @@ body {
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
-  background-color: red;
+  /* background-color: red; */
 }
 table,
 th,
@@ -25,6 +25,8 @@ tr {
 .button1:hover {
   background-color: rgb(255, 208, 0);
 }
+tr {
+}
 tr:nth-child(even) {
   background-color: rgb(231, 229, 229);
 }
@@ -37,7 +39,7 @@ tr:nth-child(1) {
   width: 150px;
 }
 #alink33 {
-  padding: 10px 15px;
+  padding: 10px 10px;
   width: 150px;
   display: inline-block;
   font-size: 13px;
@@ -48,7 +50,7 @@ tr:nth-child(1) {
   font-weight: 500;
   margin-right: 20px;
   margin-bottom: 20px;
-  transition: 0.3s ease-in-out;
+  trasnition: 0.4s ease-in-out;
 }
 #alink33:hover {
   /* color:black; */
@@ -83,10 +85,10 @@ tr {
   /* margin-left: 1.5%; */
 }
 .button {
-  padding: 10px 4px;
+  padding: 10px 10px;
   width: 130px;
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   border-radius: 8px;
   background-color: #0d607e;
   color: white;
@@ -94,7 +96,7 @@ tr {
   font-weight: 500;
   margin: 5px 1px;
   /* margin-bottom: 20px; */
-  transition: 0.3s ease-in-out;
+  trasnition: 0.4s ease-in-out;
 }
 .button:hover {
   text-decoration: none;
@@ -169,6 +171,9 @@ tr {
 
 #sidebar header a:hover {
   color: #fff;
+}
+
+#sidebar .nav {
 }
 
 #sidebar .nav a {
@@ -345,4 +350,10 @@ tr {
   width: 200px;
   height: 33px;
   border-radius: 5px;
+}
+.bcolorr {
+  /* background-color: rgb(233, 227, 229); */
+}
+.space {
+  margin-left: 10px;
 }

@@ -14,6 +14,7 @@ const student_schema = new mongoose.Schema({
     email : {
         type:String,
         required:true,
+        unique:true
         },
 
         password : {
@@ -28,6 +29,11 @@ const student_schema = new mongoose.Schema({
         age : {
             type:Number,
             required:true
+            },
+            section:{
+                type:String,
+                required:true,
+                uppercase:true
             },
             status:{
                 type:String,

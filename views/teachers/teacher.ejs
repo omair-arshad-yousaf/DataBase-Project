@@ -19,44 +19,39 @@
         <div id="sidebar">
           <header>
             <img src="https://online.umt.edu.pk/img/UMT_Logo.png" style = "width:55px; height:50px;"   alt="">
-            <a href="#">UMT</a>
-          </header>
-          <ul class="nav">
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-view-dashboard "></i> Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-account"></i> Students
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-account-box"></i> Teachers
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-view-week"></i> Classes
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-broken-image"></i> Sections
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-storage"></i> Subjects
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-calendar"></i> Attendence
-              </a>
-            </li>
+            <a href="/admin_home">UMT</a>
+            </header>
+            <ul class="nav">
+              <li>
+                <a href="/admin_home">
+                  <i class="zmdi zmdi-view-dashboard "></i> Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="/student">
+                  <i class="zmdi zmdi-account"></i> Students
+                </a>
+              </li>
+              <li>
+                <a href="/teacher">
+                  <i class="zmdi zmdi-account-box"></i> Teachers
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="zmdi zmdi-view-week"></i> Classes
+                </a>
+              </li>
+              <li>
+                <a href="/section">
+                  <i class="zmdi zmdi-broken-image"></i> Sections
+                </a>
+              </li>
+              <li>
+                <a href="/subject">
+                  <i class="zmdi zmdi-storage"></i> Subjects
+                </a>
+              </li>
           </ul>
         </div>
 
@@ -76,10 +71,10 @@
           </nav>
           <div class="stud" >TEACHER DATABASE </div>
           <div style = "text-align: center;">
-            <div class = "divbtn"><a href="/teacher/create" id = "alink33">Add New Teacher +</a></div>
-            <div class = "divbtn"><a href="/teacher/find_id" id = "alink33">Search By ID  <i class="zmdi zmdi-search-in-page"></i></a></div>
+            <div class = "divbtn"><a href="/teacher_create" id = "alink33">Add New Teacher +</a></div>
+            <div class = "divbtn"><a href="/teacher_find_id" id = "alink33">Search By ID  <i class="zmdi zmdi-search-in-page"></i></a></div>
      
-            <div class = "divbtn"><a href="/teacher/find" id = "alink33">Search by name <i class="zmdi zmdi-search-in-page"></i></a></div>
+            <div class = "divbtn"><a href="/teacher_find" id = "alink33">Search by name <i class="zmdi zmdi-search-in-page"></i></a></div>
           </div>
           <table style="margin:0px auto; width:700px;">
 <tr>
@@ -100,8 +95,8 @@
   <td><%= users[i].age%></td>
   <td><%= users[i].status%></td>
   <td><div> <a   class="button" href="/teacher?id=<%= users[i]._id%> ">Details  <i class="zmdi zmdi-eye"></i></a> </div></td>
-  <td><div>  <a  class="button"  href="/teacher/update/<%= users[i]._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div></td>
-  <td><div>  <a  class="button"  href="/teacher/del/<%= users[i]._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div></td>
+  <td><div>  <a  class="button"  href="/teacher_update/<%= users[i]._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div></td>
+  <td><div>  <a  class="button"  href="/teacher_del/<%= users[i]._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div></td>
 </tr>
 </tr>
 

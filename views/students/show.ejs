@@ -20,21 +20,21 @@
           <div id="sidebar">
             <header>
               <img src="https://online.umt.edu.pk/img/UMT_Logo.png" style = "width:55px; height:50px;"   alt="">
-              <a href="#">UMT</a>
+              <a href="/admin_home">UMT</a>
             </header>
             <ul class="nav">
               <li>
-                <a href="#">
+                <a href="/admin_home">
                   <i class="zmdi zmdi-view-dashboard "></i> Dashboard
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/student">
                   <i class="zmdi zmdi-account"></i> Students
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/teacher">
                   <i class="zmdi zmdi-account-box"></i> Teachers
                 </a>
               </li>
@@ -44,17 +44,17 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/section">
                   <i class="zmdi zmdi-broken-image"></i> Sections
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/subject">
                   <i class="zmdi zmdi-storage"></i> Subjects
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="/attendance">
                   <i class="zmdi zmdi-calendar"></i> Attendence
                 </a>
               </li>
@@ -112,6 +112,13 @@
   
   </tr>
   <tr>
+    <th style="text-align: center;">Section : </th>
+
+
+<td><%= users.section%></td>
+
+</tr>
+  <tr>
     <th style="text-align: center;">Status : </th>
 
 
@@ -124,8 +131,8 @@
    
   </table>
            
-  <div>  <a  class="button" style = "margin-left:25px; " href="/student/update/<%= users._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div>
-  <div>  <a  class="button"  style = "margin-left:25px;" href="/student/delete/<%= users._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div>         
+  <div>  <a  class="button" style = "margin-left:25px; " href="/student_update/<%= users._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div>
+  <div>  <a  class="button"  style = "margin-left:25px;" href="/student_delete/<%= users._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div>         
 
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

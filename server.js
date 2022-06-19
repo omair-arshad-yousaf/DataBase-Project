@@ -24,9 +24,33 @@ connectDB()
 app.use(express.urlencoded({extended:false}));
 var Studentdb = require("./model/scheme");
 var Teacherdb = require("./model/teacher");
+var Admindb = require("./model/admin");
 
-app.get("/", (req,res)=>{
-    res.render("index")
+app.get("/admin_login", (req,res)=>{
+    res.render("login/admin_login")
+})
+app.post("/admin_login",async(req,res)=>{
+    try{
+        const id =req.body.email;
+        const password= req.body.password;
+        const admin = await Admindb.findOne({email:id});
+        console.log(req.body.password);
+        if(admin.password===password){
+            res.render("index");
+        }
+        else{
+            res.render("students/error2");
+        }
+
+    }
+    catch{
+        res.render("students/error3");
+    }
+
+})
+
+app.get("/admin_home",(req,res)=>{
+    res.render("index");
 })
 
 
@@ -86,17 +110,17 @@ app.get("/student", (req,res)=>{
 
     }
 })
-app.get("/student/find_id",(req,res)=>{
+app.get("/student_find_id",(req,res)=>{
     res.render("students/find_id");
 })
-app.get("/student/find",(req,res)=>{
+app.get("/student_find",(req,res)=>{
     res.render("students/find");
 })
 //create student
-app.get("/student/create", (req,res)=>{
+app.get("/student_create", (req,res)=>{
     res.render("students/create")
 })
-app.post("/student/create",(req,res)=>{
+app.post("/student_create",(req,res)=>{
     if(!req.body){
         req.status(400).send({message:"Content cannot be empty "});
         return;
@@ -108,6 +132,7 @@ app.post("/student/create",(req,res)=>{
     password : req.body.password,
     confirmpass: req.body.confirmpass,
     age: req.body.age,
+    section: req.body.section,
     status:req.body.status
     })
     if(req.body.password===req.body.confirmpass){
@@ -125,12 +150,35 @@ app.post("/student/create",(req,res)=>{
 
 });
 
+app.get("/admin_create",(req,res)=>{
+    res.render("teachers/cr_admin");
+})
+app.post("/admin_create",(req,res)=>{
+    if(!req.body){
+        req.status(400).send({message:"Content cannot be empty "});
+        return;
+    }
+    const users= new Admindb({
+    email:req.body.email,
+    password: req.body.pass,
+    })
+        users
+        .save(users)
+        .then(users=>{
+            res.redirect("/student")
+        })
+        .catch(err=>{
+           res.redirect("/error1");
+        })
+
+});
+
 //find student
 // app.get("/student/find",controller.find);
 // app.get("/student/find/:id",controller.findbyId)
 
 //update student 
-app.get("/student/update/:id",(req,res)=>{
+app.get("/student_update/:id",(req,res)=>{
     const id= req.params.id;
     Studentdb.findById(id).then(users=>{
         if(!users){
@@ -143,7 +191,7 @@ app.get("/student/update/:id",(req,res)=>{
     res.status(500).send({message:`Error retriving user with id ${id}`})
 })})
     
-app.post("/student/update/:id",(req,res)=>{
+app.post("/student_update/:id",(req,res)=>{
     if(!req.body){
         res.redirect("/error1")
     }
@@ -161,7 +209,7 @@ app.post("/student/update/:id",(req,res)=>{
     }
   
 });
-app.get("/student/del/:id",(req,res)=>{
+app.get("/student_del/:id",(req,res)=>{
     const id=req.params.id;
     Studentdb.findById(id).then(users=>{
         if(!users){
@@ -173,7 +221,7 @@ app.get("/student/del/:id",(req,res)=>{
 })})
 
 //delete student
-app.get("/student/delete/:id",(req,res)=>{
+app.get("/student_delete/:id",(req,res)=>{
     const id = req.params.id;
 
     Studentdb.findByIdAndDelete(id).then(data=>{
@@ -279,10 +327,10 @@ app.get("/teacher", (req,res)=>{
 //     }
 // })
 //create teacher
-app.get("/teacher/create", (req,res)=>{
+app.get("/teacher_create", (req,res)=>{
     res.render("teachers/create")
 })
-app.post("/teacher/create",(req,res)=>{
+app.post("/teacher_create",(req,res)=>{
     if(!req.body){
         req.status(400).send({message:"Content cannot be empty "});
         return;
@@ -318,10 +366,10 @@ app.get("/error2",(req,res)=>{
     res.render("teachers/error2");
 })
 
-app.get("/teacher/find_id",(req,res)=>{
+app.get("/teacher_find_id",(req,res)=>{
     res.render("teachers/find_id");
 })
-app.get("/teacher/find",(req,res)=>{
+app.get("/teacher_find",(req,res)=>{
     res.render("teachers/find");
 })
 
@@ -331,7 +379,7 @@ app.get("/teacher/find",(req,res)=>{
 // app.get("/student/find/:id",controller.findbyId)
 
 //update teacher 
-app.get("/teacher/update/:id",(req,res)=>{
+app.get("/teacher_update/:id",(req,res)=>{
     const id= req.params.id;
     Teacherdb.findById(id).then(users=>{
         if(!users){
@@ -344,7 +392,7 @@ app.get("/teacher/update/:id",(req,res)=>{
     res.status(500).send({message:`Error retriving user with id ${id}`})
 })})
     
-app.post("/teacher/update/:id",(req,res)=>{
+app.post("/teacher_update/:id",(req,res)=>{
     if(!req.body){
         res.redirect("/error1")
     }
@@ -363,7 +411,7 @@ app.post("/teacher/update/:id",(req,res)=>{
   
 });
 
-app.get("/teacher/del/:id",(req,res)=>{
+app.get("/teacher_del/:id",(req,res)=>{
     const id=req.params.id;
     Teacherdb.findById(id).then(users=>{
         if(!users){
@@ -374,7 +422,7 @@ app.get("/teacher/del/:id",(req,res)=>{
     }   
 })})
 //delete teacher
-app.get("/teacher/delete/:id",(req,res)=>{
+app.get("/teacher_delete/:id",(req,res)=>{
     const id = req.params.id;
 
     Teacherdb.findByIdAndDelete(id).then(data=>{
