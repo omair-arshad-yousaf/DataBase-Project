@@ -29,6 +29,7 @@ app.get("/", (req,res)=>{
     res.render("index")
 })
 
+
 app.get("/student", (req,res)=>{
     if(req.query.id){
         const id = req.query.id;
@@ -43,54 +44,54 @@ app.get("/student", (req,res)=>{
     }).catch(err=>{
         res.status(500).send({message:`Error retriving user with id ${id}`})
     })}
-else{
-    Studentdb.find()
+    else{
+        if(req.query.name){
+
+            const name = req.query.name;
+            Studentdb.findOne({name:name}).then(users=>{
+                if(!users){
+                  res.render("students/error3")
+                }
+                else{
+                    console.log(users);
+                    res.render("students/show",{users})
+            }   
+        }).catch(err=>{
+            res.send("oops error occured")
+        })}
+        else if(req.query.sno){
+
+            const id = req.query.sno;
+            Studentdb.findOne({sno:id}).then(users=>{
+                if(!users){
+                    res.render("students/error3");
+                }
+                else{
+                    console.log(users);
+                    res.render("students/show",{users})
+            }   
+        }).catch(err=>{
+            res.status(500).send({message:`Error retriving user with id ${id}`})
+        })}
+        
+        else{
+            Studentdb.find()
     .then(users=>{
         res.render("students/student",{users})
     })
 .catch(err=>{
-    res.status(500).send({message:err.message||"Error finding Data"});
-})}
+    res.send({message:err.message||"Error finding Data"});
 })
+        }
 
-//find student by namee 
+    }
+})
+app.get("/student/find_id",(req,res)=>{
+    res.render("students/find_id");
+})
 app.get("/student/find",(req,res)=>{
     res.render("students/find");
 })
-app.post("/student/result",async(req,res)=>{
-    try{
-    console.log(req.body.name);
-    const name = req.body.name;
-        const users = await Studentdb.findOne({name:name});
-            if(users.name===name){
-                res.render("students/found",{users})
-            }
-            else{
-               res.send("no data found");
-        }}
-    catch(err){
-        res.send("no data found!!!!")
-    }})
-
-    //find student by id
-    app.get("/student/find_id",(req,res)=>{
-        res.render("students/find_id");
-    })
-    app.post("/student/find_id",async(req,res)=>{
-        try{
-        const sno = req.body.sno;
-            const users = await Studentdb.findOne({sno:sno});
-                if(users.sno===sno){
-                    res.render("students/found_id",{users})
-                }
-                else{
-                   res.send("no data found");
-            }}
-        catch(err){
-            res.send("no data found!!!!")
-        }})
-
-
 //create student
 app.get("/student/create", (req,res)=>{
     res.render("students/create")
@@ -101,7 +102,7 @@ app.post("/student/create",(req,res)=>{
         return;
     }
     const users= new Studentdb({
-        sno:req.body.sno,
+    sno:req.body.sno,
     name: req.body.name,
     email: req.body.email,
     password : req.body.password,
@@ -160,6 +161,16 @@ app.post("/student/update/:id",(req,res)=>{
     }
   
 });
+app.get("/student/del/:id",(req,res)=>{
+    const id=req.params.id;
+    Studentdb.findById(id).then(users=>{
+        if(!users){
+            res.status(404).send({message:`Cannot find user with id ${id}`});
+        }
+        else{
+            res.render("students/del",{users})
+    }   
+})})
 
 //delete student
 app.get("/student/delete/:id",(req,res)=>{
@@ -204,16 +215,69 @@ app.get("/teacher", (req,res)=>{
     }).catch(err=>{
         res.status(500).send({message:`Error retriving user with id ${id}`})
     })}
-else{
-    Teacherdb.find()
+    else{
+        if(req.query.name){
+
+            const name = req.query.name;
+            Teacherdb.findOne({name:name}).then(users=>{
+                if(!users){
+                  res.render("teachers/error3")
+                }
+                else{
+                    console.log(users);
+                    res.render("teachers/show",{users})
+            }   
+        }).catch(err=>{
+            res.send("oops erro occured")
+        })}
+        else if(req.query.sno){
+
+            const id = req.query.sno;
+            Teacherdb.findOne({sno:id}).then(users=>{
+                if(!users){
+                    res.render("teachers/error3");
+                }
+                else{
+                    console.log(users);
+                    res.render("teachers/show",{users})
+            }   
+        }).catch(err=>{
+            res.status(500).send({message:`Error retriving user with id ${id}`})
+        })}
+        
+        else{
+            Teacherdb.find()
     .then(users=>{
         res.render("teachers/teacher",{users})
     })
 .catch(err=>{
-    res.status(500).send({message:err.message||"Error finding Data"});
-})}
+    res.send({message:err.message||"Error finding Data"});
+})
+        }
+
+    }
 })
 
+
+// app.get("/teacher/show/:id",(req,res)=>{
+//     if(req.query.id){
+
+//         const id = req.query.id;
+//         Teacherdb.findOne({id:id}).then(users=>{
+//             if(!users){
+//                 res.status(404).send({message:`Cannot find user with id ${id}`});
+//             }
+//             else{
+//                 console.log(users);
+//                 res.render("teachers/show",{users})
+//         }   
+//     }).catch(err=>{
+//         res.status(500).send({message:`Error retriving user with id ${id}`})
+//     })}
+//     else{
+//         res.send("cannot find anything");
+//     }
+// })
 //create teacher
 app.get("/teacher/create", (req,res)=>{
     res.render("teachers/create")
@@ -246,48 +310,21 @@ app.post("/teacher/create",(req,res)=>{
     }
 
 });
-//find teacher by namee 
-app.get("/teacher/find",(req,res)=>{
-    res.render("teachers/find");
-})
-app.post("/teacher/result",async(req,res)=>{
-    try{
-    console.log(req.body.name);
-    const name = req.body.name;
-        const users = await Teacherdb.findOne({name:name});
-            if(users.name===name){
-                res.render("teachers/found",{users})
-            }
-            else{
-               res.send("no data found");
-        }}
-    catch(err){
-        res.send("no data found!!!!")
-    }})
 
-    //find teacher by id
-    app.get("/teacher/find_id",(req,res)=>{
-        res.render("teachers/find_id");
-    })
-    app.post("/teacher/find_id",async(req,res)=>{
-        try{
-        const id = req.body.sno;
-            const users = await Teacherdb.findOne({sno:id});
-                if(users.sno===id){
-                    res.render("teachers/found_id",{users})
-                }
-                else{
-                   res.send("no data found");
-            }}
-        catch(err){
-            res.send("no data found!!!!")
-        }})
 app.get("/error1",(req,res)=>{
     res.render("teachers/error1");
 })
 app.get("/error2",(req,res)=>{
     res.render("teachers/error2");
 })
+
+app.get("/teacher/find_id",(req,res)=>{
+    res.render("teachers/find_id");
+})
+app.get("/teacher/find",(req,res)=>{
+    res.render("teachers/find");
+})
+
 
 //find student
 // app.get("/student/find",controller.find);
@@ -326,6 +363,16 @@ app.post("/teacher/update/:id",(req,res)=>{
   
 });
 
+app.get("/teacher/del/:id",(req,res)=>{
+    const id=req.params.id;
+    Teacherdb.findById(id).then(users=>{
+        if(!users){
+            res.status(404).send({message:`Cannot find user with id ${id}`});
+        }
+        else{
+            res.render("teachers/del",{users})
+    }   
+})})
 //delete teacher
 app.get("/teacher/delete/:id",(req,res)=>{
     const id = req.params.id;

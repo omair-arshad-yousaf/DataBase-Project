@@ -26,7 +26,7 @@ const student_schema = new mongoose.Schema({
         required:true
         },
         age : {
-            type:String,
+            type:Number,
             required:true
             },
             status:{
