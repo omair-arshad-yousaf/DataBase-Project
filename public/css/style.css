@@ -25,8 +25,7 @@ tr {
 .button1:hover {
   background-color: rgb(255, 208, 0);
 }
-tr {
-}
+
 tr:nth-child(even) {
   background-color: rgb(231, 229, 229);
 }
@@ -50,7 +49,7 @@ tr:nth-child(1) {
   font-weight: 500;
   margin-right: 20px;
   margin-bottom: 20px;
-  trasnition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 #alink33:hover {
   /* color:black; */
@@ -96,7 +95,7 @@ tr {
   font-weight: 500;
   margin: 5px 1px;
   /* margin-bottom: 20px; */
-  trasnition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 .button:hover {
   text-decoration: none;
@@ -173,8 +172,7 @@ tr {
   color: #fff;
 }
 
-#sidebar .nav {
-}
+
 
 #sidebar .nav a {
   background: none;
@@ -351,9 +349,30 @@ tr {
   height: 33px;
   border-radius: 5px;
 }
-.bcolorr {
-  /* background-color: rgb(233, 227, 229); */
-}
+
 .space {
   margin-left: 10px;
+}
+
+.button2
+{
+background-color: #007bb5;
+width:120px;
+height:38px;
+color:white;
+transition: 0.3s ease-in-out;
+border-radius: 10px;
+border:2px solid rgb(245, 205, 132);
+}
+.button2:hover{
+background-color: rgb(255, 187, 0);
+color: #000000;
+}
+.p1
+{
+ 
+text-align:center;
+margin-right: 3px;
+    font-size: 17px;
+   
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMS</title>
+    <title>Teacher Portal</title>
     <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css
@@ -19,39 +19,33 @@
         <div id="sidebar">
           <header>
             <img src="https://online.umt.edu.pk/img/UMT_Logo.png" style = "width:55px; height:50px;"   alt="">
-            <a href="/admin_home">UMT</a>
+            <a href="#">UMT</a>
           </header>
           <ul class="nav">
+            
             <li>
-              <a href="/admin_home">
-                <i class="zmdi zmdi-view-dashboard "></i> Dashboard
+              
+                <a href="/assign">
+                <i class="zmdi zmdi-assignment"></i> Assignments
               </a>
             </li>
             <li>
-              <a href="/student">
-                <i class="zmdi zmdi-account"></i> Students
+              <a href="#">
+                <i class="zmdi zmdi-calendar"></i> Timetable
               </a>
             </li>
             <li>
-              <a href="/teacher">
-                <i class="zmdi zmdi-account-box"></i> Teachers
+              <a href="#">
+                <i class="zmdi zmdi-hourglass-alt"></i> Announcements
               </a>
             </li>
             <li>
-              <a href="/course">
-                <i class="zmdi zmdi-storage"></i> Courses
-              </a>
-            </li>
-              <li>
-              <a href="/class">
-                <i class="zmdi zmdi-view-week"></i> Classes
-              </a>
-            </li>
-            <li>
-              <a href="/admin_login">
+              <a href="/teacher_login">
                 <i class="zmdi zmdi-tag-close"></i> Log out
               </a>
             </li>
+            
+           
           </ul>
         </div>
 
@@ -65,45 +59,44 @@
                   <!-- <a href="#"><i class="zmdi zmdi-notifications text-danger"></i> -->
                   </a>
                 </li>
-                <li><a href="/home" > <h4>University Management System</h4></a></li>
+                <li><a href="/teacher_prof?id=<%=stud.id%>" > <h4> <button class = "button2"><span class = "p1"> <%= stud.name %>   </span>  <i class="zmdi zmdi-account-circle" ></i>  </button></h4></a></li>
               </ul>
             </div>
           </nav>
-    
+    <h4 style="margin-left: 2%;"> LMS</h4>
           <div class="container-fluid ">
           <div class="bcolor">
-         <div class="box" ><img src="pics/img1.png" alt="" class = "imgs " ><p class = "ifont">Students
+         <div class="box " ><img src="pics/img1.png" alt="" class = "imgs " ><p class = "ifont">Create Assignments
            <br><p id = "divfont">
-         <a href="/student" class = "alink"> 
+         <a href="/assign" class = "alink"> 
           <i class="zmdi zmdi-eye"></i> 
-          View students info</p>  </a>   </p></div>
+          View assignments info</p>  </a>   </p></div>
            
       
-         <div class="box" ><img src="pics/img3.png" alt="" class = "imgs"><p class = "ifont">Teachers
+         <div class="box" ><img src="pics/img3.png" alt="" class = "imgs"><p class = "ifont">Time table
         <br><p p id = "divfont">
-         <a href="/teacher" class = "alink">
+         <a href="pics/timetable.jpeg" class = "alink">
           <i class="zmdi zmdi-eye"></i>  
-          View teachers info</p></a> </p>
+          View time table info</p></a> </p>
         </div>
-        <div class="container-fluid ">
-          <!-- <div class="bcolor"> -->
-         <div class="box" ><img src="pics/img2.png" alt="" class = "imgs"><p class = "ifont">Courses
-          <br>   <p id = "divfont">
-           <a href="/course" class = "alink">
-            <i class="zmdi zmdi-eye"></i>  
-            View Courses info</p> </a> </p>
-         </div>
-
-            <div class="box" ><img src="pics/img4.png" alt="" class = "imgs"><p class = "ifont">Class
-              <br><p id="divfont">
-               <a href="/class" class = "alink">
-                <i class="zmdi zmdi-eye"></i>  
-                View Classes info</p> </a> </p></div>
-          </div>
-          <!-- </div> -->
-         
-      </div>
+ 
     </div>
+</div>
+
+        <div class="container-fluid ">
+            <div class="bcolor">
+
+            <div class="box" ><img src="pics/img4.png" alt="" class = "imgs"><p class = "ifont">Announcements
+              <br><p id="divfont">
+               <a href="" class = "alink">
+                <i class="zmdi zmdi-eye"></i>  
+                View announcements info</p> </a> </p></div>
+           
+           
+            </div>
+       
+         
+   
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->

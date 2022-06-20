@@ -19,39 +19,32 @@
         <div id="sidebar">
           <header>
             <img src="https://online.umt.edu.pk/img/UMT_Logo.png" style = "width:55px; height:50px;"   alt="">
-            <a href="/admin_home">UMT</a>
+            <a href="#">UMT</a>
           </header>
           <ul class="nav">
+            
             <li>
-              <a href="/admin_home">
-                <i class="zmdi zmdi-view-dashboard "></i> Dashboard
+              
+                <a href="/assign">
+                <i class="zmdi zmdi-assignment"></i> Assignments
               </a>
             </li>
             <li>
-              <a href="/student">
-                <i class="zmdi zmdi-account"></i> Students
+              <a href="#">
+                <i class="zmdi zmdi-calendar"></i> Timetable
               </a>
             </li>
             <li>
-              <a href="/teacher">
-                <i class="zmdi zmdi-account-box"></i> Teachers
+              <a href="#">
+                <i class="zmdi zmdi-hourglass-alt"></i> Announcements
               </a>
             </li>
             <li>
-              <a href="/course">
-                <i class="zmdi zmdi-storage"></i> Courses
-              </a>
-            </li>
-              <li>
-              <a href="/class">
-                <i class="zmdi zmdi-view-week"></i> Classes
-              </a>
-            </li>
-            <li>
-              <a href="/admin_login">
+              <a href="/teacher_login">
                 <i class="zmdi zmdi-tag-close"></i> Log out
               </a>
             </li>
+
           </ul>
         </div>
 
@@ -65,42 +58,40 @@
                   <!-- <a href="#"><i class="zmdi zmdi-notifications text-danger"></i> -->
                   </a>
                 </li>
-                <li><a href="/home" > <h4>University Management System</h4></a></li>
+                <li><a href="/index" > <h4>University Management System</h4></a></li>
               </ul>
             </div>
           </nav>
-    
-          <div class="container-fluid ">
-          <div class="bcolor">
-         <div class="box" ><img src="pics/img1.png" alt="" class = "imgs " ><p class = "ifont">Students
-           <br><p id = "divfont">
-         <a href="/student" class = "alink"> 
-          <i class="zmdi zmdi-eye"></i> 
-          View students info</p>  </a>   </p></div>
-           
-      
-         <div class="box" ><img src="pics/img3.png" alt="" class = "imgs"><p class = "ifont">Teachers
-        <br><p p id = "divfont">
-         <a href="/teacher" class = "alink">
-          <i class="zmdi zmdi-eye"></i>  
-          View teachers info</p></a> </p>
-        </div>
-        <div class="container-fluid ">
-          <!-- <div class="bcolor"> -->
-         <div class="box" ><img src="pics/img2.png" alt="" class = "imgs"><p class = "ifont">Courses
-          <br>   <p id = "divfont">
-           <a href="/course" class = "alink">
-            <i class="zmdi zmdi-eye"></i>  
-            View Courses info</p> </a> </p>
-         </div>
-
-            <div class="box" ><img src="pics/img4.png" alt="" class = "imgs"><p class = "ifont">Class
-              <br><p id="divfont">
-               <a href="/class" class = "alink">
-                <i class="zmdi zmdi-eye"></i>  
-                View Classes info</p> </a> </p></div>
+          <div class="stud" >ASSIGNMENT DATABASE </div>
+          <div style = "text-align: center;">
+            <div class = "divbtn"><a href="/assign_create" id = "alink33">Add New Assignment +</a></div>
           </div>
-          <!-- </div> -->
+          <table style="margin:0px auto; width:600px;">
+<tr>
+  <th style="text-align:center; padding:10px 40px;">Sno</th>
+  <th style="text-align:center; padding:10px 20px;">Assign_ID</th>
+  <th style="text-align:center; padding:10px 40px;">Section</th>
+  <th style="text-align:center; padding:10px 40px;">Title</th>
+
+  <th colspan="3" style="text-align: center;padding:10px 199px;">Action</th>
+</tr>
+  <% for (var i=0;i<users.length;i++){%>
+    <tr>
+    <td><%=      i+1     %></td>
+      <td><%= users[i].sno%></td>
+      <td><%= users[i].section%></td>
+  <td><%= users[i].title%></td>
+
+  <td><div> <a   class="button" href="/assign?id=<%= users[i]._id %> ">Details  <i class="zmdi zmdi-eye"></i></a> </div></td>
+  <td><div>  <a  class="button"  href="/assign_update/<%= users[i]._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div></td>
+  <td><div>  <a  class="button"  href="/assign_del/<%= users[i]._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div></td>
+</tr>
+</tr>
+
+  <% } %>
+
+    </table>
+         
          
       </div>
     </div>
@@ -110,3 +101,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
+
