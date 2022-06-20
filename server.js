@@ -33,6 +33,7 @@ var Assigndb = require("./model/assign");
 app.get("/admin_login", (req,res)=>{
     res.render("login/admin_login")
 })
+
 app.post("/admin_login",async(req,res)=>{
     try{
         const id =req.body.email;
@@ -225,6 +226,8 @@ app.get("/student_find_id",(req,res)=>{
 app.get("/student_find",(req,res)=>{
     res.render("students/find");
 })
+
+
 //create student
 app.get("/student_create", (req,res)=>{
     res.render("students/create")
@@ -234,7 +237,7 @@ app.post("/student_create",(req,res)=>{
         req.status(400).send({message:"Content cannot be empty "});
         return;
     }
-    const users= new Studentdb({
+    const users = new Studentdb({
     sno:req.body.sno,
     name: req.body.name,
     email: req.body.email,
@@ -245,9 +248,7 @@ app.post("/student_create",(req,res)=>{
     status:req.body.status
     })
     if(req.body.password===req.body.confirmpass){
-        users
-        .save(users)
-        .then(users=>{
+        users.save(users).then(users=>{
             res.redirect("/student")
         })
         .catch(err=>{
