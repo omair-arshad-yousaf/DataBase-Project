@@ -82,13 +82,13 @@ app.post("/user_login",async(req,res)=>{
 app.get("/student_assign",async(req,res)=>{
         const id = req.query.id;
         const stud = await Studentdb.findById(id);
-        console.log(stud);
+        // console.log(stud);
     Studentdb.findById(id).then(users=>{
         if(!users){
     res.send("error 1")
            }
         else{
-          Assigndb.findOne({section:stud.section}).then(users=>{
+          Assigndb.find({section:stud.section}).then(users=>{
             if(!users){
                 console.log(stud);
                 res.send("error 2")
@@ -181,8 +181,7 @@ app.get("/student", (req,res)=>{
     else{
         if(req.query.name){
 
-            const name = req.query.name;
-            Studentdb.findOne({name:name}).then(users=>{
+            Studentdb.find({name:req.query.name}).then(users=>{
                 if(!users){
                   res.render("students/error3")
                 }
@@ -195,8 +194,8 @@ app.get("/student", (req,res)=>{
         })}
         else if(req.query.sno){
 
-            const id = req.query.sno;
-            Studentdb.findOne({sno:id}).then(users=>{
+            // const id = req.query.sno;
+            Studentdb.find({sno:req.query.sno}).then(users=>{
                 if(!users){
                     res.render("students/error3");
                 }
@@ -209,8 +208,7 @@ app.get("/student", (req,res)=>{
         })}
         
         else{
-            Studentdb.find()
-    .then(users=>{
+            Studentdb.find().then(users=>{
         res.render("students/student",{users})
     })
 .catch(err=>{
@@ -395,23 +393,22 @@ app.get("/teacher", (req,res)=>{
     })}
     else{
         if(req.query.name){
-
-            const name = req.query.name;
-            Teacherdb.findOne({name:name}).then(users=>{
+            // let data ={};
+            //  data = {name:req.query.name};
+            Teacherdb.find({name:req.query.name}).then(users=>{
                 if(!users){
                   res.render("teachers/error3")
                 }
                 else{
                     console.log(users);
-                    res.render("teachers/show",{users})
-            }   
+                    res.render("teachers/show",{users});
+            }  
         }).catch(err=>{
             res.send("oops erro occured")
         })}
         else if(req.query.sno){
 
-            const id = req.query.sno;
-            Teacherdb.findOne({sno:id}).then(users=>{
+            Teacherdb.find({sno:req.query.sno}).then(users=>{
                 if(!users){
                     res.render("teachers/error3");
                 }
@@ -965,7 +962,5 @@ app.get("/assign_delete/:id",(req,res)=>{
     }).catch(err=>{
         res.render("assignments/error1");    })
 })
-
-
 
 app.listen(5500);

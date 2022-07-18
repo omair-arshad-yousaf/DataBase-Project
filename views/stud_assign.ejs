@@ -82,40 +82,44 @@ th
     <br><br><br>
 
 
-
+    <%if(users.length==0){%>
+      <h1 style="display: flex; justify-content: center; ">No Record Found</h1>
+          <%  }%>
+          <% for(var i=0;i<users.length ;i++){%>
     <table style="margin:auto; width:700px;">
         <tr>
-<h4> <%= users.title%> </h4>
+<h4> <%= users[i].title%> </h4>
    <br>
         </tr>
 
 <tr>
     <th style="text-align: center;">ID </th>
-    <td ><%= users.sno %></td></tr>
+    <td ><%= users[i].sno %></td></tr>
 
     <tr> <th style="text-align: center;">Section </th>
-    <td><%= users.section %> </td></tr>
+    <td><%= users[i].section %> </td></tr>
 
     <tr> <th style="text-align: center;">Title</th>
-     <td><%= users.title %></td></tr>
+     <td><%= users[i].title %></td></tr>
 
      <tr> <th style="text-align: center;">Q:01</th>
-    <td><%= users.q1%></td></tr>
+    <td><%= users[i].q1%></td></tr>
 
     <tr> <th style="text-align: center;">Q:02</th>
-       <td><%= users.q2 %></td></tr>
+       <td><%= users[i].q2 %></td></tr>
 
        <tr> <th style="text-align: center;">Q:03</th>
-        <td><%= users.q3 %></td></tr>
+        <td><%= users[i].q3 %></td></tr>
 
         <tr>
     <th style="text-align: center;">Q:04</th>
-    <td><%= users.q4 %></td>
+    <td><%= users[i].q4 %></td>
 </tr>
 
  
 
 </table>
+<%}%>
 
 <div class = "ncl" style="margin-top:20px ;">
 <!-- <div>  <a  class=" button btn-success"  style = "  margin-left:25px; text-decoration: none; margin-bottom: 10px ;width:180px;" href="/user_login?id=<%= users._id %> ">Back</a> </div> -->

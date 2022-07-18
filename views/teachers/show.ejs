@@ -74,7 +74,12 @@
             <div>  <a  class="button"  style = "margin-left:25px;" href="/teacher"> <i class="zmdi zmdi-long-arrow-left"></i>     Back</a></div> 
             <div class="stud" >TEACHER INFORMATION </div>
             <!-- <div class = "divbtn"><a href="/student/create"  style = "margin-left:25px;"id = "alink33">Add New Student +</a></div> -->
-      <table style="margin:0px auto; width:700px;">
+            <%if(users.length==0){%>
+              <h1 style="display: flex; justify-content: center; ">No Record Found</h1>
+                  <%  }%> 
+           
+            <% for(var i=0;i<users.length ;i++){%>
+            <table style="margin:0px auto; width:700px;">
           <tr>
               <th style="text-align: center; " colspan="2" >       Teacher Data</th>
      
@@ -82,35 +87,35 @@
 
   <tr>
     <th style="text-align: center;">ID : </th>
-    <td><%= users.sno%></td>
+    <td><%= users[i].sno%></td>
 </tr>
   <tr>
       <th style="text-align: center;">Name : </th>
-      <td><%= users.name%></td>
+      <td><%= users[i].name%></td>
   </tr>
   <tr>
       <th style="text-align: center;">Email : </th>
-      <td><%= users.email%></td>
+      <td><%= users[i].email%></td>
   </tr>
   <tr>
     <th style="text-align: center;">Password : </th>
 
 
-<td><%= users.password%></td>
+<td><%= users[i].password%></td>
 
 </tr>
       <tr>
           <th style="text-align: center;">Age : </th>
    
   
-    <td><%= users.age%></td>
+    <td><%= users[i].age%></td>
   
   </tr>
   <tr>
     <th style="text-align: center;">Status : </th>
 
 
-<td><%= users.status%></td>
+<td><%= users[i].status%></td>
 
 </tr>
 
@@ -118,10 +123,10 @@
   
    
   </table>
-           
-  <div>  <a  class="button" style = "margin-left:25px; " href="/teacher_update/<%= users._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div>
-  <div>  <a  class="button"  style = "margin-left:25px;" href="/teacher_delete/<%= users._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div>         
-
+    
+  <div>  <a  class="button" style = "margin-left:25px; " href="/teacher_update/<%= users[i]._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div>
+  <div>  <a  class="button"  style = "margin-left:25px;" href="/teacher_delete/<%= users[i]._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div>         
+  <%}%>    
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

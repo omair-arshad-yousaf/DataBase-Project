@@ -66,7 +66,8 @@
             <div>  <a  class="button"  style = "margin-left:25px;" href="/assign"> <i class="zmdi zmdi-long-arrow-left"></i>     Back</a></div> 
             <div class="stud" >ASSIGNMENT INFORMATION </div>
             <!-- <div class = "divbtn"><a href="/student/create"  style = "margin-left:25px;"id = "alink33">Add New Student +</a></div> -->
-      <table style="margin:0px auto; width:700px;">
+            <% for(var i=0;i<users.length ;i++){%>
+            <table style="margin:0px auto; width:700px;">
           <tr>
               <th style="text-align: center; " colspan="2" >       Assignment Data</th>
      
@@ -74,35 +75,35 @@
 
   <tr>
       <th style="text-align: center;">ID : </th>
-      <td><%= users.sno%></td>
+      <td><%= users[i].sno%></td>
   </tr>
   <tr>
     <th style="text-align: center;">Section </th>
-    <td><%= users.section%></td>
+    <td><%= users[i].section%></td>
   </tr>
       <th style="text-align: center;">Title : </th>
-      <td><%= users.title%></td>
+      <td><%= users[i].title%></td>
   </tr>
   <tr>
       <th style="text-align: center;">Q:01 </th>
-      <td><%= users.q1%></td>
+      <td><%= users[i].q1%></td>
   </tr>
   <tr>
     <th style="text-align: center;">Q:02</th>
-    <td><%= users.q2%></td>
+    <td><%= users[i].q2%></td>
 </tr>
 <tr>
   <th style="text-align: center;">Q:03 </th>
-  <td><%= users.q3%></td>
+  <td><%= users[i].q3%></td>
 </tr>
 <tr>
   <th style="text-align: center;">Q:04 </th>
-  <td><%= users.q4%></td>
+  <td><%= users[i].q4%></td>
 </tr>
   
    
   </table>
-           
+  <%}%>         
   <div>  <a  class="button" style = "margin-left:25px; " href="/assign_update/<%= users._id %> ">Update <i class="zmdi zmdi-edit"></i></a> </div>
   <div>  <a  class="button"  style = "margin-left:25px;" href="/assign_del/<%= users._id %> ">Delete <i class="zmdi zmdi-delete "></i></a></div>         
 
